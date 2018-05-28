@@ -29,14 +29,13 @@ public class Account {
 	public void createAccount() {
 		AccountQuery ac = new AccountQuery();
 		ac.addNewAccount(firstName, lastName, taxClassification);
+		
 		// will have to expand this method in future to check if account exists
 	}
 	
-	public void setIncomeExpense(double income, double expense) {
+	public void setIncomeExpense(int accNumber, double income, double expense) {
 		MoneyQuery mq = new MoneyQuery();
-		mq.addIncomeExpense(income, expense);
-		
-		// will have to expand this later to check users id first
+		mq.addIncomeExpense(accNumber, income, expense);
 	}
 
 }

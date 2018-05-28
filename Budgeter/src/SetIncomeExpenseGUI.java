@@ -8,6 +8,7 @@ public class SetIncomeExpenseGUI extends JFrame{
 	
 	private JTextField income;
 	private JTextField expense;
+	private JTextField accNumber;
 	private JButton submit;
 	private JButton alreadySet;
 	
@@ -15,11 +16,13 @@ public class SetIncomeExpenseGUI extends JFrame{
 		
 		setLayout(new FlowLayout());
 		
+		accNumber = new JTextField("account number");
 		income = new JTextField("Enter Income");
 		expense = new JTextField("Enter Expenses");
 		submit = new JButton("Submit");
 		alreadySet = new JButton("Get Forecast");
 		
+		add(accNumber);
 		add(income);
 		add(expense);
 		add(submit);
@@ -30,11 +33,12 @@ public class SetIncomeExpenseGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
+				int accountIdNum = Integer.parseInt(accNumber.getText());
 				double enteredIncome = Double.parseDouble(income.getText());
 				double enteredExpenses = Double.parseDouble(expense.getText());
 				
 				Account acc = new Account();
-				acc.setIncomeExpense(enteredIncome, enteredExpenses);
+				acc.setIncomeExpense(accountIdNum, enteredIncome, enteredExpenses);
 				
 				dispose();
 				

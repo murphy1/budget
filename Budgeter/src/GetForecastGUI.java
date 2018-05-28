@@ -11,6 +11,9 @@ import tax.TaxTotal;
 public class GetForecastGUI extends JFrame{
 	
 	private JLabel topLabel;
+	
+	private JTextField accNum;
+	
 	private JRadioButton threeMonthBtn;
 	private JRadioButton sixMonthBtn;
 	private JRadioButton oneYearBtn;
@@ -26,6 +29,9 @@ public class GetForecastGUI extends JFrame{
 		setLayout(new FlowLayout());
 		
 		topLabel = new JLabel();
+		
+		accNum = new JTextField("account number");
+		
 		threeMonthBtn = new JRadioButton();
 		sixMonthBtn = new JRadioButton();
 		oneYearBtn = new JRadioButton();
@@ -45,6 +51,9 @@ public class GetForecastGUI extends JFrame{
 		resultField.setText("Forecast Results here");
 		
 		add(topLabel);
+		
+		add(accNum);
+		
 		add(threeMonthBtn);
 		add(sixMonthBtn);
 		add(oneYearBtn);
@@ -59,16 +68,18 @@ public class GetForecastGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				int accountIdNum = Integer.parseInt(accNum.getText());
+				
 				if(threeMonthBtn.isSelected()) {
-					resultField.setText(""+getForecastResult(3));
+					resultField.setText(""+getForecastResult(accountIdNum, 3));
 				}else if(sixMonthBtn.isSelected()) {
-					resultField.setText(""+getForecastResult(6));
+					resultField.setText(""+getForecastResult(accountIdNum, 6));
 				}else if(oneYearBtn.isSelected()) {
-					resultField.setText(""+getForecastResult(12));
+					resultField.setText(""+getForecastResult(accountIdNum, 12));
 				}else if(threeYearBtn.isSelected()) {
-					resultField.setText(""+getForecastResult(36));
+					resultField.setText(""+getForecastResult(accountIdNum, 36));
 				}else if(fiveYearBtn.isSelected()) {
-					resultField.setText(""+getForecastResult(60));
+					resultField.setText(""+getForecastResult(accountIdNum, 60));
 				}
 				
 			}
@@ -78,17 +89,17 @@ public class GetForecastGUI extends JFrame{
 		
 	}
 	
-	private double getForecastResult(int forecastType) {
+	private double getForecastResult(int accountNumber, int forecastType) {
 		
 		ForecastQuery fq = new ForecastQuery();
 		TaxTotal tt = new TaxTotal();
 		Expenses ex = new Expenses();
 		Forecast fc = new Forecast();
 		
-		int txClass = fq.getClassificationForForecast(2);
-		double incomeAfterTax = tt.getTax(2, txClass);
+		int txClass = fq.getClassificationForForecast(accountNumber);
+		double incomeAfterTax = tt.getTax(accountNumber, txClass);
 	
-		double expenses = ex.getExpenses(2);
+		double expenses = ex.getExpenses(accountNumber);
 		
 		double moneyToForecast = Budget.getSpendingMoney(incomeAfterTax, expenses);
 		

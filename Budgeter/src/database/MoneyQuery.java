@@ -11,8 +11,9 @@ public class MoneyQuery {
 	
 
 	
-	public void addIncomeExpense(double income, double expense) {
+	public void addIncomeExpense(int accNum, double income, double expense) {
 		
+		int accountIdNum = accNum;
 		double dbIncome = income;
 		double dbExpense = expense;
 		
@@ -21,7 +22,7 @@ public class MoneyQuery {
 			Connection conn = null;
 			conn = DriverManager.getConnection(dbUrl, username, password);
 			
-			String sql = "update account_table set income = ?, expenses = ? where id = 2";
+			String sql = "update account_table set income = ?, expenses = ? where id = '"+accountIdNum+"'";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
