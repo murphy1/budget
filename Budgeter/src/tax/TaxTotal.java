@@ -25,7 +25,7 @@ public class TaxTotal {
 	
 	// method to add all together and return to Main Runnable class
 
-	public double getTax(int id, String classification) {
+	public double getTax(int id, int classification) {
 		
 		double income;
 		

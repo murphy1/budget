@@ -19,6 +19,8 @@ public class GetForecastGUI extends JFrame{
 	private JButton submitBtn;
 	private JTextField resultField;
 	
+	double result;
+	
 	GetForecastGUI(){
 		
 		setLayout(new FlowLayout());
@@ -58,18 +60,15 @@ public class GetForecastGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				
 				if(threeMonthBtn.isSelected()) {
-					
-					
-					resultField.setText(""+getForecastResult());
-					
+					resultField.setText(""+getForecastResult(3));
 				}else if(sixMonthBtn.isSelected()) {
-					resultField.setText("6 months");
+					resultField.setText(""+getForecastResult(6));
 				}else if(oneYearBtn.isSelected()) {
-					resultField.setText("6 months");
+					resultField.setText(""+getForecastResult(12));
 				}else if(threeYearBtn.isSelected()) {
-					resultField.setText("6 months");
+					resultField.setText(""+getForecastResult(36));
 				}else if(fiveYearBtn.isSelected()) {
-					resultField.setText("6 months");
+					resultField.setText(""+getForecastResult(60));
 				}
 				
 			}
@@ -79,25 +78,37 @@ public class GetForecastGUI extends JFrame{
 		
 	}
 	
-	private double getForecastResult() {
+	private double getForecastResult(int forecastType) {
 		
 		ForecastQuery fq = new ForecastQuery();
 		TaxTotal tt = new TaxTotal();
 		Expenses ex = new Expenses();
 		Forecast fc = new Forecast();
 		
-		//double income = fq.getIncomeForForecast(6);
-		String txClass = fq.getClassificationForForecast(5).trim().toLowerCase();
-		double incomeAfterTax = tt.getTax(5, txClass.trim().toLowerCase());
-		
-		//------------------
-		double expenses = ex.getExpenses(5);
+		int txClass = fq.getClassificationForForecast(2);
+		double incomeAfterTax = tt.getTax(2, txClass);
+	
+		double expenses = ex.getExpenses(2);
 		
 		double moneyToForecast = Budget.getSpendingMoney(incomeAfterTax, expenses);
 		
-		double result = fc.forecast3m(moneyToForecast);
 		
-		return incomeAfterTax;
+		if(forecastType == 3) {
+			result = fc.forecast3m(moneyToForecast);
+		}else if(forecastType == 6) {
+			result = fc.forecast6m(moneyToForecast);
+		}else if(forecastType == 12) {
+			result = fc.forecast1y(moneyToForecast);
+		}else if(forecastType == 36) {
+			result = fc.forecast3y(moneyToForecast);
+		}else if(forecastType == 60) {
+			result = fc.forecast5y(moneyToForecast);
+		}
+		
+		
+		
+		
+		return result;
 		
 	}
 	

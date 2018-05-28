@@ -21,7 +21,7 @@ public class MoneyQuery {
 			Connection conn = null;
 			conn = DriverManager.getConnection(dbUrl, username, password);
 			
-			String sql = "update account_table set income = ?, expenses = ? where id = 6";
+			String sql = "update account_table set income = ?, expenses = ? where id = 2";
 			
 			PreparedStatement ps = conn.prepareStatement(sql);
 			

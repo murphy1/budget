@@ -6,13 +6,13 @@ public class Account {
 	private int accountId;
 	private String firstName;
 	private String lastName;
-	private String taxClassification;
+	private int taxClassification;
 	
 	public Account() {
 		
 	}
 	
-	public Account(String firstName, String lastName, String taxClassification) {
+	public Account(String firstName, String lastName, int taxClassification) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.taxClassification = taxClassification;

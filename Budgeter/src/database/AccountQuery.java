@@ -9,11 +9,11 @@ public class AccountQuery {
 	
 
 	
-	public void addNewAccount(String firstName, String lastName, String taxClass) {
+	public void addNewAccount(String firstName, String lastName, int taxClass) {
 		
 		String fName = firstName;
 		String lName = lastName;
-		String tClass = taxClass;
+		int tClass = taxClass;
 		
 		try {
 			
@@ -26,7 +26,7 @@ public class AccountQuery {
 			
 			ps.setString(1, fName);
 			ps.setString(2, lName);
-			ps.setString(3, tClass);
+			ps.setInt(3, tClass);
 			ps.setDouble(4, 0);
 			ps.setDouble(5, 0);
 			

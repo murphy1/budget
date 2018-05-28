@@ -45,11 +45,11 @@ public class GUI extends JFrame {
 				
 				String fName = firstName.getText();
 				String lName = lastName.getText();
-				String txClass = taxClass.getText();
+				int txClass = Integer.parseInt(taxClass.getText());
 				
 				// this works
-				//Account account = new Account(fName, lName, txClass);
-				//account.createAccount();
+				Account account = new Account(fName, lName, txClass);
+				account.createAccount();
 				
 				dispose();
 				

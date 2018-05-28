@@ -8,11 +8,11 @@ import java.sql.Statement;
 
 public class ForecastQuery {
 	
-	private String classificationResult;
+	private int classificationResult;
 	
 
 	
-	public String getClassificationForForecast(int id) {
+	public int getClassificationForForecast(int id) {
 		
 		int dbId = id;
 		
@@ -31,7 +31,7 @@ public class ForecastQuery {
 			rs = stmt.executeQuery(sql);
 			rs.last();
 			
-			classificationResult = rs.getString("taxClass");
+			classificationResult = rs.getInt("taxClass");
 			
 			rs.close();
 			stmt.close();

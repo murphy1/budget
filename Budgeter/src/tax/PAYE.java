@@ -10,7 +10,7 @@ public class PAYE{
 	private boolean marriedOneEarner;
 	private boolean marriedBothEarn;
 	
-	public double calcPaye(double income, String classification) {
+	public double calcPaye(double income, int classification) {
 		
 		// income multiplied by 12 to get yearly figure
 		incomeYearly = income * 12;
@@ -22,7 +22,7 @@ public class PAYE{
 		 *  married both earn = 4
 		 * */
 		
-		if(classification == "single no kids") {
+		if(classification == 1) {
 			
 			if(incomeYearly <= 34550) {
 				result = (((incomeYearly / 100) * 20) / 12);
@@ -35,7 +35,7 @@ public class PAYE{
 			}
 				
 				
-		}else if(classification == "single with kids") {
+		}else if(classification == 2) {
 			
 			if(incomeYearly <= 38550) {
 				result = (incomeYearly / 100) * 20;
@@ -47,7 +47,7 @@ public class PAYE{
 				result = ((38550 / 100) * 20) + topTax;
 			}
 			
-		}else if(classification == "married one earn") {
+		}else if(classification == 3) {
 			
 			if(incomeYearly <= 43550) {
 				result = (incomeYearly / 100) * 20;
@@ -59,7 +59,7 @@ public class PAYE{
 				result = ((43550 / 100) * 20) + topTax;
 			}
 			
-		}else if(classification == "married both earn") {
+		}else if(classification == 4) {
 			
 			if(incomeYearly <= 69100) {
 				result = (incomeYearly / 100) * 20;
