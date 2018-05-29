@@ -9,6 +9,7 @@ import java.sql.Statement;
 public class TaxQuery {
 	
 
+
 	double dbIncome;
 	
 	public double getIncomeFromDatabase(int id) {
