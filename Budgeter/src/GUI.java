@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import database.AccountQuery;
+
 public class GUI extends JFrame {
 
 		private JLabel label;
@@ -14,6 +16,12 @@ public class GUI extends JFrame {
 		private JTextField firstName;
 		private JTextField lastName;
 		private JTextField taxClass;
+		
+		private JLabel errorLbl;
+		
+		private JLabel newAccNumber;
+		
+		private JButton nextBtn;
 	 
 		GUI()
 		{
@@ -29,6 +37,11 @@ public class GUI extends JFrame {
 			lastName = new JTextField("Last Name");
 			taxClass = new JTextField("Tax Classification");
 			
+			errorLbl = new JLabel();
+			
+			newAccNumber = new JLabel();
+			
+			nextBtn = new JButton();
 			
 			add(label);
 			add(alreadyHaveAccBtn);
@@ -37,11 +50,22 @@ public class GUI extends JFrame {
 			add(taxClass);
 			add(submitNewAccBtn);
 			
-		      
+			add(errorLbl);
+			
+		    add(newAccNumber);  
 		
 	    submitNewAccBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
+				if(firstName.getText().isEmpty() || lastName.getText().isEmpty()) {
+					errorLbl.setText("first name and last name cannot be empty");
+					firstName.setText("First Name");
+					lastName.setText("Last Name");
+				}else if(taxClass.getText().isEmpty()) {
+					errorLbl.setText("tax classification cannot be empty");
+					taxClass.setText("Tax Classification");
+				}else{
 				
 				String fName = firstName.getText();
 				String lName = lastName.getText();
@@ -51,6 +75,22 @@ public class GUI extends JFrame {
 				Account account = new Account(fName, lName, txClass);
 				account.createAccount();
 				
+				AccountQuery aq = new AccountQuery();
+				
+				newAccNumber.setText("Your new Account Number: "+aq.getAccountId(fName));
+				
+				add(nextBtn);
+				nextBtn.setText("Next");
+				}
+				
+			}
+	    });
+	    
+	    alreadyHaveAccBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
 				dispose();
 				
 				SetIncomeExpenseGUI ob = new SetIncomeExpenseGUI();
@@ -59,9 +99,10 @@ public class GUI extends JFrame {
 				ob.setTitle("GUI");
 				
 			}
+	    	
 	    });
 	    
-	    alreadyHaveAccBtn.addActionListener(new ActionListener() {
+	    nextBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {

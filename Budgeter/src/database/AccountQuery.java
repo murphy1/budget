@@ -12,6 +12,7 @@ import java.util.List;
 public class AccountQuery {
 	
 	private String result;
+	private int getAccountResult;
 	
 
 	
@@ -90,6 +91,32 @@ public class AccountQuery {
 		
 		
 		return result;
+	}
+	
+	public int getAccountId(String fName) {
+		
+		try {
+			
+			Connection conn;
+			Statement stmt;
+			ResultSet rs;
+			
+			conn = DriverManager.getConnection(dbUrl, username, password);
+			
+			String sql = "select * from account_table where firstName = '"+fName+"'";
+			
+			stmt = conn.createStatement();
+			
+			rs = stmt.executeQuery(sql);
+			rs.last();
+			
+			getAccountResult = rs.getInt("id");
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return getAccountResult;
 	}
 
 }
