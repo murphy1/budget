@@ -1,11 +1,12 @@
+package gui;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
 import database.AccountQuery;
-import errors.Exceptions;
+import model.Account;
 
 public class SetIncomeExpenseGUI extends JFrame{
 	
@@ -22,7 +23,7 @@ public class SetIncomeExpenseGUI extends JFrame{
 	
 	private JLabel errorLbl;
 	
-	SetIncomeExpenseGUI(){
+	public SetIncomeExpenseGUI(){
 		
 		setLayout(new FlowLayout());
 		

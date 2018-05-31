@@ -1,3 +1,4 @@
+package model;
 import database.MoneyQuery;
 
 public class Expenses implements Budget {

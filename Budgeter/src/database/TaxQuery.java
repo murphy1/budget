@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class TaxQuery {
 	
-
+	
 
 	double dbIncome;
 	

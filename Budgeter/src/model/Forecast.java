@@ -1,3 +1,4 @@
+package model;
 
 public class Forecast extends Income{
 	

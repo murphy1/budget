@@ -9,7 +9,7 @@ import java.sql.Statement;
 
 public class MoneyQuery {
 	
-
+	
 	
 	public void addIncomeExpense(int accNum, double income, double expense) {
 		

@@ -1,3 +1,4 @@
+package model;
 import database.AccountQuery;
 import database.MoneyQuery;
 

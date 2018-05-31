@@ -1,11 +1,19 @@
-import java.awt.Dimension;
+package gui;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 import database.ForecastQuery;
+import model.Budget;
+import model.Expenses;
+import model.Forecast;
 import tax.TaxTotal;
 
 public class GetForecastGUI extends JFrame{
@@ -24,7 +32,7 @@ public class GetForecastGUI extends JFrame{
 	
 	double result;
 	
-	GetForecastGUI(){
+	public GetForecastGUI(){
 		
 		setLayout(new FlowLayout());
 		

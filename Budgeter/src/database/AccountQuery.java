@@ -14,7 +14,7 @@ public class AccountQuery {
 	private String result;
 	private int getAccountResult;
 	
-
+	
 	
 	public void addNewAccount(String firstName, String lastName, int taxClass) {
 		

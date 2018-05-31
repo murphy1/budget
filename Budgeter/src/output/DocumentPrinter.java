@@ -1,9 +1,15 @@
+package output;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
+
+import model.Budget;
+import model.Expenses;
+import model.Income;
 
 public class DocumentPrinter {
 

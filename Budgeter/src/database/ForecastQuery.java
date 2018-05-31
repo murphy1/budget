@@ -10,7 +10,7 @@ public class ForecastQuery {
 	
 	private int classificationResult;
 	
-
+	
 	
 	public int getClassificationForForecast(int id) {
 		

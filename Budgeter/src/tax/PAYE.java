@@ -74,7 +74,7 @@ public class PAYE{
 		}
 		
 		
-		return result;
+		return (result / 12);
 	}
 	
 

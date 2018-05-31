@@ -1,6 +1,9 @@
+package model;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import gui.GUI;
 import tax.TaxTotal;
 
 public class Runnable {
